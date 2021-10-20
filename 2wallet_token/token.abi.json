@@ -1,0 +1,65 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "createAlbum",
+			"inputs": [
+				{"name":"name","type":"string"},
+				{"name":"author","type":"string"},
+				{"name":"year","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getAlbumOwner",
+			"inputs": [
+				{"name":"albumId","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getAlbumInfo",
+			"inputs": [
+				{"name":"albumId","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"albumName","type":"string"},
+				{"name":"albumAuthor","type":"string"},
+				{"name":"albumYear","type":"uint256"},
+				{"name":"albumPrice","type":"uint256"}
+			]
+		},
+		{
+			"name": "setPrice",
+			"inputs": [
+				{"name":"albumId","type":"uint256"},
+				{"name":"newPrice","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"components":[{"name":"name","type":"string"},{"name":"author","type":"string"},{"name":"year","type":"uint256"},{"name":"price","type":"uint256"}],"name":"albumArr","type":"tuple[]"},
+		{"name":"albumToOwner","type":"map(uint256,uint256)"}
+	]
+}
