@@ -5,7 +5,7 @@ import "GameObject.sol";
 import "Unit.sol";
 
 contract Station is GameObject{
-    address[] public uArr;
+    address[] uArr;
     mapping(address => uint) uMap;
 
     modifier ownerOrUnit {

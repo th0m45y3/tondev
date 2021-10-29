@@ -38,6 +38,7 @@
 		{
 			"name": "baseDestroying",
 			"inputs": [
+				{"name":"newHolder","type":"address"}
 			],
 			"outputs": [
 			]

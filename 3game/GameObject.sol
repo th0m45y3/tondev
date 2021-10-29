@@ -37,10 +37,10 @@ abstract contract GameObject is InterfaceGameObject{
         else return(false);
     }
 
-    function getData() public view tvmacc
-    returns(uint, uint) {
-        return(health, defencePower);
-    }
+    // function getData() public view tvmacc
+    // returns(uint, uint) {
+    //     return(health, defencePower);
+    // }
 
     function dying(address attacker) internal virtual;
 
