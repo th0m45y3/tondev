@@ -1,0 +1,50 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "recieveAttack",
+			"inputs": [
+				{"name":"attackPower","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDefencePower",
+			"inputs": [
+				{"name":"newPower","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getData",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"},
+				{"name":"value1","type":"uint256"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"health","type":"uint256"},
+		{"name":"defencePower","type":"uint256"}
+	]
+}

@@ -1,0 +1,76 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "addUnit",
+			"inputs": [
+				{"name":"newUnit","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deleteUnit",
+			"inputs": [
+				{"name":"corpse","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "recieveAttack",
+			"inputs": [
+				{"name":"attackPower","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDefencePower",
+			"inputs": [
+				{"name":"newPower","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getData",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"},
+				{"name":"value1","type":"uint256"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "uArr",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"uArr","type":"address[]"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"health","type":"uint256"},
+		{"name":"defencePower","type":"uint256"},
+		{"name":"uArr","type":"address[]"},
+		{"name":"uMap","type":"map(address,uint256)"}
+	]
+}

@@ -1,0 +1,84 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"Base","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "attack",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "giveAttackPower",
+			"inputs": [
+				{"name":"newPower","type":"uint16"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "baseDestroying",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "recieveAttack",
+			"inputs": [
+				{"name":"attackPower","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDefencePower",
+			"inputs": [
+				{"name":"newPower","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getData",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"},
+				{"name":"value1","type":"uint256"}
+			]
+		},
+		{
+			"name": "base",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"base","type":"address"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"health","type":"uint256"},
+		{"name":"defencePower","type":"uint256"},
+		{"name":"base","type":"address"},
+		{"name":"attackPower","type":"uint16"}
+	]
+}
