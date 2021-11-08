@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: shop.tvc
+      wc: None
+    keys: shop.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "render diamond like piano chapter era analyst tail tunnel crucial million gesture"
+Raw address: 0:ee21a5cb7acc3c2ac980b3c5796fd72628831c3712fddc6b6a1cacdc43c3a7ee
+testnet:
+Non-bounceable address (for init): 0QDuIaXLesw8KsmAs8V5b9cmKIMcNxL93GtqHKzcQ8On7ozu
+Bounceable address (for later access): kQDuIaXLesw8KsmAs8V5b9cmKIMcNxL93GtqHKzcQ8On7tEr
+mainnet:
+Non-bounceable address (for init): UQDuIaXLesw8KsmAs8V5b9cmKIMcNxL93GtqHKzcQ8On7jdk
+Bounceable address (for later access): EQDuIaXLesw8KsmAs8V5b9cmKIMcNxL93GtqHKzcQ8On7mqh
+Succeeded

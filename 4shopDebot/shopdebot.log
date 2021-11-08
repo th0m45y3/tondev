@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: shopDebot.tvc
+      wc: None
+    keys: keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "close demand stone spin method kitchen accuse spawn silent pull sting gospel"
+Raw address: 0:cde16af17b9518717677401ecf73777b62fc7255559222c2b710156e75c3d12f
+testnet:
+Non-bounceable address (for init): 0QDN4Wrxe5UYcXZ3QB7Pc3d7YvxyVVWSIsK3EBVudcPRL0Mr
+Bounceable address (for later access): kQDN4Wrxe5UYcXZ3QB7Pc3d7YvxyVVWSIsK3EBVudcPRLx7u
+mainnet:
+Non-bounceable address (for init): UQDN4Wrxe5UYcXZ3QB7Pc3d7YvxyVVWSIsK3EBVudcPRL_ih
+Bounceable address (for later access): EQDN4Wrxe5UYcXZ3QB7Pc3d7YvxyVVWSIsK3EBVudcPRL6Vk
+Succeeded
