@@ -41,8 +41,7 @@ contract ShopList is IShopList{
         delete m_purchases[id];
     }
 
-    function getPurchases() external view override 
-    returns (Purchase[] purchases) {
+    function getPurchases() external view override returns (Purchase[] purchases) {
         string name;
         uint createdAt;
         bool isPaid;
@@ -57,8 +56,7 @@ contract ShopList is IShopList{
        }
     }
 
-    function getPurchSumm() external view override 
-    returns (PurchaseSummary purchSumm) {
+    function getPurchSumm() external view override returns (PurchaseSummary purchSumm) {
         uint paidCount;
         uint unpaidCount;
         uint paidSum;

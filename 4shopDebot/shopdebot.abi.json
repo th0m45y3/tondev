@@ -101,7 +101,7 @@
 			]
 		},
 		{
-			"name": "checkIfStatusIs0",
+			"name": "checkAccForDeploy",
 			"inputs": [
 				{"name":"acc_type","type":"int8"}
 			],
@@ -118,15 +118,15 @@
 			]
 		},
 		{
-			"name": "setStat",
+			"name": "setSummary",
 			"inputs": [
-				{"components":[{"name":"completeCount","type":"uint32"},{"name":"incompleteCount","type":"uint32"}],"name":"stat","type":"tuple"}
+				{"components":[{"name":"paidCount","type":"uint256"},{"name":"unpaidCount","type":"uint256"},{"name":"paidSum","type":"uint256"}],"name":"summ","type":"tuple"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "createTask",
+			"name": "createPurchs",
 			"inputs": [
 				{"name":"index","type":"uint32"}
 			],
@@ -134,7 +134,7 @@
 			]
 		},
 		{
-			"name": "createTask_",
+			"name": "createNamedPurchase",
 			"inputs": [
 				{"name":"value","type":"bytes"}
 			],
@@ -142,7 +142,7 @@
 			]
 		},
 		{
-			"name": "showTasks",
+			"name": "showPurshases",
 			"inputs": [
 				{"name":"index","type":"uint32"}
 			],
@@ -150,15 +150,15 @@
 			]
 		},
 		{
-			"name": "showTasks_",
+			"name": "showShopList",
 			"inputs": [
-				{"components":[{"name":"id","type":"uint32"},{"name":"text","type":"bytes"},{"name":"createdAt","type":"uint64"},{"name":"isDone","type":"bool"}],"name":"tasks","type":"tuple[]"}
+				{"components":[{"name":"id","type":"uint256"},{"name":"name","type":"bytes"},{"name":"createdAt","type":"uint256"},{"name":"isPaid","type":"bool"},{"name":"price","type":"uint256"}],"name":"purchases","type":"tuple[]"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "updateTask",
+			"name": "updatePurch",
 			"inputs": [
 				{"name":"index","type":"uint32"}
 			],
@@ -166,7 +166,7 @@
 			]
 		},
 		{
-			"name": "updateTask_",
+			"name": "updateSelectedPurch",
 			"inputs": [
 				{"name":"value","type":"bytes"}
 			],
@@ -174,7 +174,7 @@
 			]
 		},
 		{
-			"name": "updateTask__",
+			"name": "updatePurchPayment",
 			"inputs": [
 				{"name":"value","type":"bool"}
 			],
@@ -182,7 +182,15 @@
 			]
 		},
 		{
-			"name": "deleteTask",
+			"name": "updatePurchPrice",
+			"inputs": [
+				{"name":"price","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deletePurchase",
 			"inputs": [
 				{"name":"index","type":"uint32"}
 			],
@@ -190,7 +198,7 @@
 			]
 		},
 		{
-			"name": "deleteTask_",
+			"name": "deletePurchase_",
 			"inputs": [
 				{"name":"value","type":"bytes"}
 			],
