@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: wallet.tvc
+      wc: None
+    keys: wallet.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "gorilla habit humor asthma oval exclude phone render brick devote indoor expand"
+Raw address: 0:e4634531ec255ff990db357e00325ddaaf59b57562885e2313eee27d4665e141
+testnet:
+Non-bounceable address (for init): 0QDkY0Ux7CVf-ZDbNX4AMl3ar1m1dWKIXiMT7uJ9RmXhQdLA
+Bounceable address (for later access): kQDkY0Ux7CVf-ZDbNX4AMl3ar1m1dWKIXiMT7uJ9RmXhQY8F
+mainnet:
+Non-bounceable address (for init): UQDkY0Ux7CVf-ZDbNX4AMl3ar1m1dWKIXiMT7uJ9RmXhQWlK
+Bounceable address (for later access): EQDkY0Ux7CVf-ZDbNX4AMl3ar1m1dWKIXiMT7uJ9RmXhQTSP
+Succeeded
