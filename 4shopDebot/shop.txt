@@ -1,3 +1,7 @@
+Config: default
+Input arguments:
+   input: shop.tvc
+Decoded data:
 {
   "split_depth": "None",
   "special": "None",

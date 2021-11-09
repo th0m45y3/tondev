@@ -2,7 +2,7 @@ pragma ton-solidity >= 0.35.0;
 pragma AbiHeader expire;
 pragma AbiHeader pubkey;
 
-import "Includes.sol";
+import "includes.sol";
 
 contract ShopList is IShopList{
     uint m_count;
@@ -30,6 +30,8 @@ contract ShopList is IShopList{
     }
 
     function updatePurchase(uint id, bool isPaid, uint price) public override onlyOwner tvmacc{
+        //debot need to catch the exist error !!!!!!!!!
+        require(m_purchases.exists(id), 102);
         optional(Purchase) purch = m_purchases.fetch(id);
         require(purch.hasValue(), 102);
         m_purchases[id].isPaid = isPaid; 
@@ -37,7 +39,8 @@ contract ShopList is IShopList{
     }
 
     function deletePurchase(uint id) public  override onlyOwner tvmacc{
-        require(m_purchases.exists(id), 102);
+        //debot need to catch the exist error !!!!!!!!!
+        require(m_purchases.exists(id), 102); 
         delete m_purchases[id];
     }
 

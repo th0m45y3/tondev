@@ -2,16 +2,16 @@ Config: default
 Input arguments:
      tvc: shopDebot.tvc
       wc: None
-    keys: keys.json
+    keys: shopDebot.keys.json
 init_data: None
 is_update_tvc: None
 
-Seed phrase: "close demand stone spin method kitchen accuse spawn silent pull sting gospel"
-Raw address: 0:cde16af17b9518717677401ecf73777b62fc7255559222c2b710156e75c3d12f
+Seed phrase: "account water good gauge pave promote acid three hill sugar honey neutral"
+Raw address: 0:4bd74ea36e3ffc5df42080c111680d27e836488d3d4064789bdf5e15dccfa669
 testnet:
-Non-bounceable address (for init): 0QDN4Wrxe5UYcXZ3QB7Pc3d7YvxyVVWSIsK3EBVudcPRL0Mr
-Bounceable address (for later access): kQDN4Wrxe5UYcXZ3QB7Pc3d7YvxyVVWSIsK3EBVudcPRLx7u
+Non-bounceable address (for init): 0QBL106jbj_8XfQggMERaA0n6DZIjT1AZHib314V3M-mafv-
+Bounceable address (for later access): kQBL106jbj_8XfQggMERaA0n6DZIjT1AZHib314V3M-maaY7
 mainnet:
-Non-bounceable address (for init): UQDN4Wrxe5UYcXZ3QB7Pc3d7YvxyVVWSIsK3EBVudcPRL_ih
-Bounceable address (for later access): EQDN4Wrxe5UYcXZ3QB7Pc3d7YvxyVVWSIsK3EBVudcPRL6Vk
+Non-bounceable address (for init): UQBL106jbj_8XfQggMERaA0n6DZIjT1AZHib314V3M-maUB0
+Bounceable address (for later access): EQBL106jbj_8XfQggMERaA0n6DZIjT1AZHib314V3M-maR2x
 Succeeded

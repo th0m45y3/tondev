@@ -10,7 +10,7 @@ import "../AddressInput.sol";
 import "../ConfirmInput.sol";
 import "../Upgradable.sol";
 import "../Sdk.sol";
-import "Includes.sol";
+import "includes.sol";
 
 contract ShopDebot is Debot, Upgradable {
     TvmCell m_stateInit;             // Contract code

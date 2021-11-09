@@ -17,9 +17,12 @@ fi
 
 DEBOT_NAME=${1%.*} 
 CONTRACT_NAME=${DEBOT_NAME%Debot*}
-NETWORK="${2:-https://net.ton.dev}"
+NETWORK="${2:-http://net.ton.dev}"
 GIVER_NAME=wallet
-GIVER_ADDRESS=0:9967adb29a2a4b78410b0848b81d75b9bed99a91130eb265426802bd56759d05
+GIVER_ADDRESS=0:53bebce9e093a10fcbb84d1116a9dc7a2364c9ee6da801859b2361ab2db74316
+
+#todo_code=$CONTRACT_NAME.decode.json
+
 
 # Check if tonos-cli installed 
 tos=./tonos-cli
@@ -34,11 +37,12 @@ else
     fi
 fi
 
+
 function giver {
     $tos --url $NETWORK call $GIVER_ADDRESS \
+        sendMoney "{\"dest\":\"$1\",\"amount\":1000000000}" \
         --abi ../$GIVER_NAME.abi.json \
-        --sign ../$GIVER_NAME.keys.json \
-        sendWithoutCommission "{\"dest\":\"$1\",\"amount\":10000000000,\"bounce\":false}" #DEST AMOUNT AND THATS ALL FOR NEW WALLET
+        --sign ../$GIVER_NAME.keys.json
         #1>/dev/null
 }
 
@@ -65,48 +69,54 @@ function setData {
 
 echo "_______________________________________________________________"
 echo "STEP 0: decode stateinit"
+echo "_______________________________________________________________"
 $(decodecontract $CONTRACT_NAME)
 TODO_CODE=$(setCode $CONTRACT_NAME)
-echo "code: $TODO_CODE"
+echo "code: $TODO_CODE" #############################
 TODO_DATA=$(setData $CONTRACT_NAME)
-echo "data: $TODO_DATA"
+echo "data: $TODO_DATA" #############################
 
 echo "_______________________________________________________________"
-echo "STEP 1: calculating debot address and send money"
-echo "Contract name:$CONTRACT_NAME"
+echo "STEP 1: calculating debot address"
+echo "_______________________________________________________________"
+echo "Contract name:$CONTRACT_NAME" #################
 genaddr $DEBOT_NAME
 DEBOT_ADDRESS=$(get_address $DEBOT_NAME)
+echo $DEBOT_ADDRESS                 #################
 giver $DEBOT_ADDRESS
 
+echo "_______________________________________________________________"
 echo "STEP 2: creating dabi. [use extraton to] Send tokens to address: $DEBOT_ADDRESS"
 echo "_______________________________________________________________"
 #giver $DEBOT_ADDRESS
 DEBOT_DABI=$(cat $DEBOT_NAME.abi.json | xxd -ps -c 20000)
-DEBOT_DABI="$(echo -e "${DEBOT_DABI}" | tr -d '[:space:]')"
-echo "{\"dabi\":\"$DEBOT_DABI\"}" > $DEBOT_NAME.dabi.json
+DEBOT_DABI="$(echo -e "${DEBOT_DABI}" | tr -d '[:space:]')" > $DEBOT_NAME.dabi.json
 
-
-echo "Step 3. Deploying contract"
-echo "_______________________________________________________________" #"{\"dabi\":\"$DEBOT_DABI\"}" \
-$tos --url $NETWORK deploy $DEBOT_NAME.tvc $DEBOT_NAME.dabi.json \
+echo "_______________________________________________________________"
+echo "Step 3. deploying contract"
+echo "_______________________________________________________________"
+$tos --url $NETWORK deploy $DEBOT_NAME.tvc "{}" \
     --sign keys.json \
     --abi $DEBOT_NAME.abi.json #1>/dev/null
 
+echo "_______________________________________________________________"
 echo "STEP 4: setting abi file"
-echo "_______________________________________________________________" #"{\"dabi\":\"$DEBOT_DABI\"}" \
-$tos --url $NETWORK call $DEBOT_ADDRESS setABI $DEBOT_NAME.dabi.json \
+echo "_______________________________________________________________"
+$tos --url $NETWORK call $DEBOT_ADDRESS setABI "{\"dabi\":\"$DEBOT_DABI\"}" \
     --sign keys.json \
     --abi $DEBOT_NAME.abi.json #1>/dev/null
 
+echo "_______________________________________________________________"
 echo "STEP 5: call setTodoCode"
 echo "_______________________________________________________________"
 $tos --url $NETWORK \
     call $DEBOT_ADDRESS \
     setTodoCode "{\"code\":$TODO_CODE,\"data\":$TODO_DATA}" \
     --abi $DEBOT_NAME.abi.json  \
-    --sign $DEBOT_NAME.keys.json \
+    --sign keys.json \
      # 1>/dev/null
 
+echo "_______________________________________________________________"
 echo "Done! Deployed debot with address: $DEBOT_ADDRESS"
 # echo "Step 0. Save decoded stateInit in $CONTRACT_NAME.decode.json"
 # decodecontract

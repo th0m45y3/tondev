@@ -6,12 +6,12 @@ Input arguments:
 init_data: None
 is_update_tvc: None
 
-Seed phrase: "render diamond like piano chapter era analyst tail tunnel crucial million gesture"
-Raw address: 0:ee21a5cb7acc3c2ac980b3c5796fd72628831c3712fddc6b6a1cacdc43c3a7ee
+Seed phrase: "tortoise unknown crucial tourist worth endless answer zoo venture chuckle quarter initial"
+Raw address: 0:c12dab86edf8ebce34a4d7a7b96b2bd9aac7466b7a8b5e8d8dbecabd0c5449d5
 testnet:
-Non-bounceable address (for init): 0QDuIaXLesw8KsmAs8V5b9cmKIMcNxL93GtqHKzcQ8On7ozu
-Bounceable address (for later access): kQDuIaXLesw8KsmAs8V5b9cmKIMcNxL93GtqHKzcQ8On7tEr
+Non-bounceable address (for init): 0QDBLauG7fjrzjSk16e5ayvZqsdGa3qLXo2Nvsq9DFRJ1V1g
+Bounceable address (for later access): kQDBLauG7fjrzjSk16e5ayvZqsdGa3qLXo2Nvsq9DFRJ1QCl
 mainnet:
-Non-bounceable address (for init): UQDuIaXLesw8KsmAs8V5b9cmKIMcNxL93GtqHKzcQ8On7jdk
-Bounceable address (for later access): EQDuIaXLesw8KsmAs8V5b9cmKIMcNxL93GtqHKzcQ8On7mqh
+Non-bounceable address (for init): UQDBLauG7fjrzjSk16e5ayvZqsdGa3qLXo2Nvsq9DFRJ1ebq
+Bounceable address (for later access): EQDBLauG7fjrzjSk16e5ayvZqsdGa3qLXo2Nvsq9DFRJ1bsv
 Succeeded
