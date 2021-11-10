@@ -8,10 +8,10 @@ if [[ $1 != *".tvc"  ]] ; then
     echo "  ${0} FILENAME NETWORK"
     echo "    where:"
     echo "      FILENAME - required, debot tvc file name"
-    echo "      NETWORK  - optional, network endpoint, default is http://127.0.0.1"
+    echo "      ADDRESS  - optional, giver address default is 0:17ffbfa96258ea4fa1b65ed77db8d8dc4adc39d561551293cab1e7ba3030fbd3"
     echo ""
     echo "PRIMER:"
-    echo "  ${0} mydebot.tvc https://net.ton.dev"
+    echo "  ${0} mydebot.tvc 0:53bebce9e093a10fcbb84d1116a9dc7a2364c9ee6da801859b2361ab2db74316"
     exit 1
 fi
 
@@ -19,7 +19,7 @@ DEBOT_NAME=${1%.*}
 CONTRACT_NAME=${DEBOT_NAME%Debot*}
 NETWORK="${2:-http://net.ton.dev}"
 GIVER_NAME=wallet
-GIVER_ADDRESS=0:53bebce9e093a10fcbb84d1116a9dc7a2364c9ee6da801859b2361ab2db74316
+GIVER_ADDRESS=${2:-0:8c5cb701575c92b73480434ee37e2a87f004cdf6e69a82c931c23a1cd8cbe311}
 
 #todo_code=$CONTRACT_NAME.decode.json
 
@@ -40,9 +40,9 @@ fi
 
 function giver {
     $tos --url $NETWORK call $GIVER_ADDRESS \
-        sendMoney "{\"dest\":\"$1\",\"amount\":1000000000}" \
-        --abi ../$GIVER_NAME.abi.json \
-        --sign ../$GIVER_NAME.keys.json
+        sendmoney "{\"dest\":\"$1\",\"amount\":1000000000}" \
+        --abi $GIVER_NAME.abi.json \
+        --sign $GIVER_NAME.keys.json
         #1>/dev/null
 }
 
@@ -96,14 +96,14 @@ echo "_______________________________________________________________"
 echo "Step 3. deploying contract"
 echo "_______________________________________________________________"
 $tos --url $NETWORK deploy $DEBOT_NAME.tvc "{}" \
-    --sign keys.json \
+    --sign $DEBOT_NAME.keys.json \
     --abi $DEBOT_NAME.abi.json #1>/dev/null
 
 echo "_______________________________________________________________"
 echo "STEP 4: setting abi file"
 echo "_______________________________________________________________"
 $tos --url $NETWORK call $DEBOT_ADDRESS setABI "{\"dabi\":\"$DEBOT_DABI\"}" \
-    --sign keys.json \
+    --sign $DEBOT_NAME.keys.json \
     --abi $DEBOT_NAME.abi.json #1>/dev/null
 
 echo "_______________________________________________________________"
@@ -113,7 +113,7 @@ $tos --url $NETWORK \
     call $DEBOT_ADDRESS \
     setTodoCode "{\"code\":$TODO_CODE,\"data\":$TODO_DATA}" \
     --abi $DEBOT_NAME.abi.json  \
-    --sign keys.json \
+    --sign $DEBOT_NAME.keys.json \
      # 1>/dev/null
 
 echo "_______________________________________________________________"

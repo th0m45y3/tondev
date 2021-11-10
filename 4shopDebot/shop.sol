@@ -38,7 +38,7 @@ contract ShopList is IShopList{
         m_purchases[id].price = price;
     }
 
-    function deletePurchase(uint id) public  override onlyOwner tvmacc{
+    function deletePurchase(uint id) public override onlyOwner tvmacc{
         //debot need to catch the exist error !!!!!!!!!
         require(m_purchases.exists(id), 102); 
         delete m_purchases[id];

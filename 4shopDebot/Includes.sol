@@ -1,3 +1,4 @@
+pragma ton-solidity ^0.47.0;
 
 struct Purchase {
     uint id;
