@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: shoppingDebot.tvc
+      wc: None
+    keys: shoppingDebot.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "chef cause skate ready relax vintage column human tell absurd differ buyer"
+Raw address: 0:e2f0902970fe52f907b70e184ad9826d7604da8ff71378fbbdd96b815add4084
+testnet:
+Non-bounceable address (for init): 0QDi8JApcP5S-Qe3DhhK2YJtdgTaj_cTePu92WuBWt1AhO9q
+Bounceable address (for later access): kQDi8JApcP5S-Qe3DhhK2YJtdgTaj_cTePu92WuBWt1AhLKv
+mainnet:
+Non-bounceable address (for init): UQDi8JApcP5S-Qe3DhhK2YJtdgTaj_cTePu92WuBWt1AhFTg
+Bounceable address (for later access): EQDi8JApcP5S-Qe3DhhK2YJtdgTaj_cTePu92WuBWt1AhAkl
+Succeeded

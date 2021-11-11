@@ -16,12 +16,10 @@ if [[ $1 != *".tvc"  ]] ; then
 fi
 
 DEBOT_NAME=${1%.*} 
-CONTRACT_NAME=${DEBOT_NAME%Debot*}
-NETWORK="${2:-http://net.ton.dev}"
+CONTRACT_NAME=${2%.*:-DEBOT_NAME%Debot*}
+NETWORK="http://net.ton.dev"
 GIVER_NAME=wallet
-GIVER_ADDRESS=${2:-0:8c5cb701575c92b73480434ee37e2a87f004cdf6e69a82c931c23a1cd8cbe311}
-
-#todo_code=$CONTRACT_NAME.decode.json
+GIVER_ADDRESS=0:8c5cb701575c92b73480434ee37e2a87f004cdf6e69a82c931c23a1cd8cbe311
 
 
 # Check if tonos-cli installed 
@@ -86,11 +84,11 @@ echo $DEBOT_ADDRESS                 #################
 giver $DEBOT_ADDRESS
 
 echo "_______________________________________________________________"
-echo "STEP 2: creating dabi. [use extraton to] Send tokens to address: $DEBOT_ADDRESS"
+echo "STEP 2: creating dabi"
 echo "_______________________________________________________________"
 #giver $DEBOT_ADDRESS
 DEBOT_DABI=$(cat $DEBOT_NAME.abi.json | xxd -ps -c 20000)
-DEBOT_DABI="$(echo -e "${DEBOT_DABI}" | tr -d '[:space:]')" > $DEBOT_NAME.dabi.json
+DEBOT_DABI="$(echo -e "${DEBOT_DABI}" | tr -d '[:space:]')" #> $DEBOT_NAME.dabi.json
 
 echo "_______________________________________________________________"
 echo "Step 3. deploying contract"
@@ -109,12 +107,19 @@ $tos --url $NETWORK call $DEBOT_ADDRESS setABI "{\"dabi\":\"$DEBOT_DABI\"}" \
 echo "_______________________________________________________________"
 echo "STEP 5: call setTodoCode"
 echo "_______________________________________________________________"
-$tos --url $NETWORK \
-    call $DEBOT_ADDRESS \
+$tos --url $NETWORK call $DEBOT_ADDRESS \
     setTodoCode "{\"code\":$TODO_CODE,\"data\":$TODO_DATA}" \
-    --abi $DEBOT_NAME.abi.json  \
-    --sign $DEBOT_NAME.keys.json \
+    --abi $DEBOT_NAME.abi.json  --sign $DEBOT_NAME.keys.json
      # 1>/dev/null
+
+echo "_______________________________________________________________"
+echo "STEP 6: call setIcon"
+echo "_______________________________________________________________"
+#ICON_BYTES=$(base64 -w 0 $DEBOT_NAME.png)
+#ICON=$(echo -n "data:image/png;base64,$ICON_BYTES" | xxd -ps -c 20000)
+#$tos --url $NETWORK call $DEBOT_ADDRESS  \
+#    setIcon "{\"icon\":\"$ICON\"}"  \
+#    --abi $DEBOT_NAME.abi.json --sign $DEBOT_NAME.keys.json
 
 echo "_______________________________________________________________"
 echo "Done! Deployed debot with address: $DEBOT_ADDRESS"

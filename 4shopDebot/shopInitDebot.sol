@@ -21,12 +21,37 @@ abstract contract ShopInitDebot is Debot, Upgradable {
     uint m_masterPubKey;          // User pubkey
     address m_msigAddress;           // User wallet address
     uint32 INITIAL_BALANCE =  200000000;  // Initial HasConstructorWithPubKey contract balance
+    bytes m_icon;
 
     function setTodoCode(TvmCell code, TvmCell data) public {
         require(msg.pubkey() == tvm.pubkey(), 101);
         tvm.accept();
         m_stateInit = tvm.buildStateInit(code, data);
     }
+
+    function setIcon(bytes _icon) public {
+        require(msg.pubkey() == tvm.pubkey(), 100);
+        tvm.accept();
+        m_icon = _icon;
+    }
+
+    function getDebotsInfo(string m_name, string m_hello) public view returns(
+        string name, string version, string publisher, string key, string author,
+        address support, string hello, string language, string dabi, bytes icon
+    ) {
+        name = m_name;
+        version = "0.0.1";
+        publisher = "th0m45y3";
+        key = "Shopping list manager";
+        author = "th0m45y3";
+        support = address.makeAddrStd(0, 0x6745547f71326dc4f990003d70f308ecbbbd0867b1b379df3913097d4e2cc246);
+        hello = m_hello;
+        language = "en";
+        dabi = m_debotAbi.get();
+        icon = m_icon;
+    }
+    
+    function menu() internal virtual; 
 
     function onError(uint32 sdkError, uint32 exitCode) public {
         Terminal.print(0, format("Operation failed. sdkError {}, exitCode {}", sdkError, exitCode));
@@ -39,21 +64,6 @@ abstract contract ShopInitDebot is Debot, Upgradable {
 
     function start() public override {
         Terminal.input(tvm.functionId(savePublicKey),"Please enter your public key without prefix '0:'",false);
-    }
-
-    function getDebotInfo() public functionID(0xDEB) override view returns(
-        string name, string version, string publisher, string key, string author,
-        address support, string hello, string language, string dabi, bytes icon
-    ) {
-        name = "ShopList DeBot";
-        version = "0.0.1";
-        publisher = "TON Labs";
-        key = "Shopping list manager";
-        author = "th0m45y3";
-        support = address.makeAddrStd(0, 0x66e01d6df5a8d7677d9ab2daf7f258f1e2a7fe73da5320300395f99e01dc3b5f);
-        hello = "Hi, i'm a ShopList DeBot.";
-        language = "en";
-        dabi = m_debotAbi.get();
     }
 
     function getRequiredInterfaces() public view override returns (uint[] interfaces) {
@@ -119,7 +129,6 @@ abstract contract ShopInitDebot is Debot, Upgradable {
         creditAccount(m_msigAddress);
     }
 
-
     function waitBeforeDeploy() public  {
         Sdk.getAccountType(tvm.functionId(checkAccForDeploy), m_address);
     }
@@ -160,8 +169,6 @@ abstract contract ShopInitDebot is Debot, Upgradable {
         m_summ = summ;
         menu();
     }
-
-    function menu() internal virtual; 
     
     function getPurchSumm(uint32 answerId) private view {
         optional(uint) none;

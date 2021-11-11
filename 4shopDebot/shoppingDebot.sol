@@ -7,6 +7,16 @@ import "shopInitDebot.sol";
 
 contract ShoppingDebot is ShopInitDebot {
 
+    function getDebotInfo() public functionID(0xDEB) override view returns(
+        string name, string version, string publisher, string key, string author,
+        address support, string hello, string language, string dabi, bytes icon
+    ) {
+        getDebotsInfo(
+            "ShopList DeBot — ShoppingDebot",
+            "Hi, i'm a ShopList DeBot. I can update purchases in your ShopList!"
+        );
+    }
+
     function menu() internal override {
         string sep = '----------------------------------------';
         Menu.select(

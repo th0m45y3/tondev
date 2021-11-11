@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: listDebot.tvc
+      wc: None
+    keys: listDebot.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "method only garbage since section fame valley lecture soap strong trend burger"
+Raw address: 0:6df591fc208c746b1831d92621c2e13aa8838eeb3b63d79c7d734ccebb28a938
+testnet:
+Non-bounceable address (for init): 0QBt9ZH8IIx0axgx2SYhwuE6qIOO6ztj15x9c0zOuyipOJCp
+Bounceable address (for later access): kQBt9ZH8IIx0axgx2SYhwuE6qIOO6ztj15x9c0zOuyipOM1s
+mainnet:
+Non-bounceable address (for init): UQBt9ZH8IIx0axgx2SYhwuE6qIOO6ztj15x9c0zOuyipOCsj
+Bounceable address (for later access): EQBt9ZH8IIx0axgx2SYhwuE6qIOO6ztj15x9c0zOuyipOHbm
+Succeeded

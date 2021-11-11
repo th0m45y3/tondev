@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: fillInDebot.tvc
+      wc: None
+    keys: fillInDebot.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "state abstract notable transfer pretty jar upgrade click find aim average zone"
+Raw address: 0:1de1b639bd37e64a095a59676409e1cfcbb0c9671fcaf0ef0d314be2f5e0b581
+testnet:
+Non-bounceable address (for init): 0QAd4bY5vTfmSglaWWdkCeHPy7DJZx_K8O8NMUvi9eC1gU2z
+Bounceable address (for later access): kQAd4bY5vTfmSglaWWdkCeHPy7DJZx_K8O8NMUvi9eC1gRB2
+mainnet:
+Non-bounceable address (for init): UQAd4bY5vTfmSglaWWdkCeHPy7DJZx_K8O8NMUvi9eC1gfY5
+Bounceable address (for later access): EQAd4bY5vTfmSglaWWdkCeHPy7DJZx_K8O8NMUvi9eC1gav8
+Succeeded
