@@ -1,4 +1,4 @@
-pragma ton-solidity ^0.47.0;
+pragma ton-solidity >=0.35.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
@@ -14,14 +14,14 @@ import "includes.sol";
 
 abstract contract ShopInitDebot is Debot, Upgradable {
     TvmCell m_stateInit;             // Contract code
-    address m_address;               // Contract address
+    address public m_address;               // Contract address
     PurchaseSummary m_summ;        // Statistics of incompleted and completed purchases
     uint32 m_purchId;                 // Purchase id for update
     bool m_purchPaid;
     uint m_masterPubKey;          // User pubkey
     address m_msigAddress;           // User wallet address
-    uint32 INITIAL_BALANCE =  200000000;  // Initial HasConstructorWithPubKey contract balance
-    bytes m_icon;
+    uint32 INITIAL_BALANCE =  200000000;  // Initial contract balance
+    bytes internal m_icon;
 
     function setTodoCode(TvmCell code, TvmCell data) public {
         require(msg.pubkey() == tvm.pubkey(), 101);
@@ -29,28 +29,17 @@ abstract contract ShopInitDebot is Debot, Upgradable {
         m_stateInit = tvm.buildStateInit(code, data);
     }
 
-    function setIcon(bytes _icon) public {
-        require(msg.pubkey() == tvm.pubkey(), 100);
-        tvm.accept();
-        m_icon = _icon;
-    }
+    // function setIcon(bytes _icon) public {
+    //     require(msg.pubkey() == tvm.pubkey(), 100);
+    //     tvm.accept();
+    //     m_icon = _icon;
+    // }
 
-    function getDebotsInfo(string m_name, string m_hello) public view returns(
+    function getDebotInfo() functionID(0xDEB) public view virtual override returns(
         string name, string version, string publisher, string key, string author,
         address support, string hello, string language, string dabi, bytes icon
-    ) {
-        name = m_name;
-        version = "0.0.1";
-        publisher = "th0m45y3";
-        key = "Shopping list manager";
-        author = "th0m45y3";
-        support = address.makeAddrStd(0, 0x6745547f71326dc4f990003d70f308ecbbbd0867b1b379df3913097d4e2cc246);
-        hello = m_hello;
-        language = "en";
-        dabi = m_debotAbi.get();
-        icon = m_icon;
-    }
-    
+    );
+
     function menu() internal virtual; 
 
     function onError(uint32 sdkError, uint32 exitCode) public {
@@ -58,7 +47,7 @@ abstract contract ShopInitDebot is Debot, Upgradable {
         menu();
     }
 
-    function onSuccess() public view {
+    function onSuccess() public view{
         getPurchSumm(tvm.functionId(setSummary));
     }
 
@@ -129,7 +118,7 @@ abstract contract ShopInitDebot is Debot, Upgradable {
         creditAccount(m_msigAddress);
     }
 
-    function waitBeforeDeploy() public  {
+    function waitBeforeDeploy() public {
         Sdk.getAccountType(tvm.functionId(checkAccForDeploy), m_address);
     }
 
@@ -141,14 +130,14 @@ abstract contract ShopInitDebot is Debot, Upgradable {
         }
     }
 
-    function deploy() private view {
+    function deploy() private view { 
         TvmCell image = tvm.insertPubkey(m_stateInit, m_masterPubKey);
-        optional(uint) none;
+        optional(uint256) none;
         TvmCell deployMsg = tvm.buildExtMsg({
             abiVer: 2,
             dest: m_address,
-            callbackId: tvm.functionId(onSuccess),
-            onErrorId:  tvm.functionId(onErrorRepeatDeploy),    // Just repeat if something went wrong
+            callbackId: 0,
+            onErrorId:  tvm.functionId(onErrorRepeatDeploy),    
             time: 0,
             expire: 0,
             sign: true,
@@ -157,6 +146,7 @@ abstract contract ShopInitDebot is Debot, Upgradable {
             call: {HasConstructorWithPubKey, m_masterPubKey}
         });
         tvm.sendrawmsg(deployMsg, 1);
+        onSuccess();
     }
 
     function onErrorRepeatDeploy(uint32 sdkError, uint32 exitCode) public view {
@@ -169,8 +159,9 @@ abstract contract ShopInitDebot is Debot, Upgradable {
         m_summ = summ;
         menu();
     }
-    
-    function getPurchSumm(uint32 answerId) private view {
+
+//no    
+    function getPurchSumm(uint32 answerId) private view { 
         optional(uint) none;
         IShopList(m_address).getPurchSumm{
             abiVer: 2,

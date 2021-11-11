@@ -6,12 +6,12 @@ Input arguments:
 init_data: None
 is_update_tvc: None
 
-Seed phrase: "chef cause skate ready relax vintage column human tell absurd differ buyer"
-Raw address: 0:e2f0902970fe52f907b70e184ad9826d7604da8ff71378fbbdd96b815add4084
+Seed phrase: "funny blue average diesel dish cement flame session stomach actress afraid dish"
+Raw address: 0:cf7feb980dc32343088e9062ac1c3c98efa4ca7a3bd35244adb8dfa7c21063eb
 testnet:
-Non-bounceable address (for init): 0QDi8JApcP5S-Qe3DhhK2YJtdgTaj_cTePu92WuBWt1AhO9q
-Bounceable address (for later access): kQDi8JApcP5S-Qe3DhhK2YJtdgTaj_cTePu92WuBWt1AhLKv
+Non-bounceable address (for init): 0QDPf-uYDcMjQwiOkGKsHDyY76TKejvTUkStuN-nwhBj6_nb
+Bounceable address (for later access): kQDPf-uYDcMjQwiOkGKsHDyY76TKejvTUkStuN-nwhBj66Qe
 mainnet:
-Non-bounceable address (for init): UQDi8JApcP5S-Qe3DhhK2YJtdgTaj_cTePu92WuBWt1AhFTg
-Bounceable address (for later access): EQDi8JApcP5S-Qe3DhhK2YJtdgTaj_cTePu92WuBWt1AhAkl
+Non-bounceable address (for init): UQDPf-uYDcMjQwiOkGKsHDyY76TKejvTUkStuN-nwhBj60JR
+Bounceable address (for later access): EQDPf-uYDcMjQwiOkGKsHDyY76TKejvTUkStuN-nwhBj6x-U
 Succeeded

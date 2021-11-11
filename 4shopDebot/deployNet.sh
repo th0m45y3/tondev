@@ -89,6 +89,7 @@ echo "_______________________________________________________________"
 #giver $DEBOT_ADDRESS
 DEBOT_DABI=$(cat $DEBOT_NAME.abi.json | xxd -ps -c 20000)
 DEBOT_DABI="$(echo -e "${DEBOT_DABI}" | tr -d '[:space:]')" #> $DEBOT_NAME.dabi.json
+echo "created!"
 
 echo "_______________________________________________________________"
 echo "Step 3. deploying contract"
@@ -115,12 +116,20 @@ $tos --url $NETWORK call $DEBOT_ADDRESS \
 echo "_______________________________________________________________"
 echo "STEP 6: call setIcon"
 echo "_______________________________________________________________"
-#ICON_BYTES=$(base64 -w 0 $DEBOT_NAME.png)
-#ICON=$(echo -n "data:image/png;base64,$ICON_BYTES" | xxd -ps -c 20000)
-#$tos --url $NETWORK call $DEBOT_ADDRESS  \
-#    setIcon "{\"icon\":\"$ICON\"}"  \
-#    --abi $DEBOT_NAME.abi.json --sign $DEBOT_NAME.keys.json
+echo "searching for $DEBOT_NAME.png ..."
+:'
+ICON_BYTES=$(base64 -w 0 $DEBOT_NAME.png)
+ICON_BYTES=$(echo $ICON_BYTES | tr -d 'n')
+ICON_BYTES=$(echo $ICON_BYTES | tr -d '[:space:]')
 
+ICON=$(echo -n "data:image/png;base64,$ICON_BYTES" | xxd -ps -c 20000)
+ICON=$(echo $ICON | tr -d '[:space:]')
+ICON=$(echo $ICON | tr -d '\n')
+
+$tos --url $NETWORK call $DEBOT_ADDRESS  \
+    setIcon "{\"icon\":\"$ICON\"}"  \
+    --abi $DEBOT_NAME.abi.json --sign $DEBOT_NAME.keys.json
+'
 echo "_______________________________________________________________"
 echo "Done! Deployed debot with address: $DEBOT_ADDRESS"
 # echo "Step 0. Save decoded stateInit in $CONTRACT_NAME.decode.json"

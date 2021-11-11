@@ -18,8 +18,8 @@ interface IShopList {
    function createPurchase(string name) external;
    function updatePurchase(uint id, bool isPaid, uint price) external;
    function deletePurchase(uint id) external;
-   function getPurchases() external view returns (Purchase[] purchases);
-   function getPurchSumm() external view returns (PurchaseSummary purchSumm);
+   function getPurchases() external returns (Purchase[] purchases);
+   function getPurchSumm() external returns (PurchaseSummary purchSumm);
 }
 
 interface Transactable {
@@ -33,5 +33,5 @@ interface Transactable {
 }
 
 abstract contract HasConstructorWithPubKey {
-   constructor(uint256 pubkey) public {}
+   constructor(uint pubkey) public {}
 }

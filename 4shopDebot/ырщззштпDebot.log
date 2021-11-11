@@ -1,0 +1,8 @@
+Config: default
+Input arguments:
+     tvc: ырщззштпDebot.tvc
+      wc: None
+    keys: ырщззштпDebot.keys.json
+init_data: None
+is_update_tvc: None
+Error: failed to read smart contract file: The system cannot find the file specified. (os error 2)

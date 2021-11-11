@@ -6,8 +6,7 @@ pragma AbiHeader pubkey;
 import "shopInitDebot.sol";
 
 contract ListDebot is ShopInitDebot {
-    bytes m_icon;
-
+    
     function getDebotInfo() public functionID(0xDEB) override view returns(
         string name, string version, string publisher, string key, string author,
         address support, string hello, string language, string dabi, bytes icon
@@ -18,7 +17,7 @@ contract ListDebot is ShopInitDebot {
         key = "Shopping list manager";
         author = "th0m45y3";
         support = address.makeAddrStd(0, 0x6745547f71326dc4f990003d70f308ecbbbd0867b1b379df3913097d4e2cc246);
-        hello = "Hi, i'm a ShopList DeBot. I can show your ShowList and delete purchases!";
+        hello = "Hi, i'm a ShopList DeBot. I can show your ShowList and delete purchs!";
         language = "en";
         dabi = m_debotAbi.get();
         icon = m_icon;
@@ -28,7 +27,7 @@ contract ListDebot is ShopInitDebot {
         string sep = '----------------------------------------';
         Menu.select(
             format(
-                "You spent {} for {} purchases and have {} unpaid (total: {})",
+                "You spent {} coins for {} purchs and have {} unpaid (total: {})",
                     m_summ.paidSum,
                     m_summ.paidCount,
                     m_summ.unpaidCount,
@@ -36,18 +35,34 @@ contract ListDebot is ShopInitDebot {
             ),
             sep,
             [
-                MenuItem("Show ShopList","",tvm.functionId(showPurshases)),
+                MenuItem("Show ShopList","",tvm.functionId(showpurchs)),
                 MenuItem("Delete purchase","",tvm.functionId(deletePurchase))
             ]
         );
     }
+
+    function showpurchs() public {
+        optional(uint) none = 0; ///////////////////////////
+        Terminal.print(0, "after index=index");
+        IShopList(m_address).getPurchSumm{
+            abiVer: 2,
+            extMsg: true,
+            sign: true, ///false
+            pubkey: none,
+            time: uint64(now),
+            expire: 0,
+            callbackId: tvm.functionId(showShopList),
+            onErrorId: tvm.functionId(onError)
+        }();
+        
+    }
     
-    function showShopList( Purchase[] purchases ) public {
+    function showShopList( Purchase[] purchs ) public {
         uint32 i;
-        if (purchases.length > 0 ) {
+        if (purchs.length > 0 ) {
             Terminal.print(0, "Your ShopList:");
-            for (i = 0; i < purchases.length; i++) {
-                Purchase purch = purchases[i];
+            for (i = 0; i < purchs.length; i++) {
+                Purchase purch = purchs[i];
                 string completed;
                 if (purch.isPaid) {
                     completed = '✓';
@@ -61,23 +76,8 @@ contract ListDebot is ShopInitDebot {
         }
         menu();
     } 
-    
-    function showPurshases(uint32 index) public view {
-        //index = index;
-        optional(uint) none;
-        IShopList(m_address).getPurchases{
-            abiVer: 2,
-            extMsg: true,
-            sign: false,
-            pubkey: none,
-            time: uint64(now),
-            expire: 0,
-            callbackId: tvm.functionId(showShopList),
-            onErrorId: 0
-        }();
-    }
 
-    function deletePurchase(uint32 index) public {
+    function deletePurchase(uint32 index) public { //uint32?
         index = index;
         if (m_summ.paidCount + m_summ.unpaidCount > 0) {
             Terminal.input(tvm.functionId(deleteSelectedPurchase), "Enter purchase number:", false);
@@ -99,6 +99,6 @@ contract ListDebot is ShopInitDebot {
                 expire: 0,
                 callbackId: tvm.functionId(onSuccess),
                 onErrorId: tvm.functionId(onError)
-            }(uint32(num));
+            }(num); //uint32?
     }
 }

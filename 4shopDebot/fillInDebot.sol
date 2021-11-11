@@ -6,7 +6,6 @@ pragma AbiHeader pubkey;
 import "shopInitDebot.sol";
 
 contract FillInDebot is ShopInitDebot {
-    bytes m_icon;
 
     function getDebotInfo() public functionID(0xDEB) override view returns(
         string name, string version, string publisher, string key, string author,
@@ -28,7 +27,7 @@ contract FillInDebot is ShopInitDebot {
         string sep = '----------------------------------------';
         Menu.select(
             format(
-                "You spent {} for {} purchases and have {} unpaid (total: {})",
+                "You spent {} coins for {} purchases and have {} unpaid (total: {})",
                     m_summ.paidSum,
                     m_summ.paidCount,
                     m_summ.unpaidCount,
@@ -46,7 +45,7 @@ contract FillInDebot is ShopInitDebot {
         Terminal.input(tvm.functionId(createNamedPurchase), "Enter one-line name:", false);
     }
 
-    function createNamedPurchase(string name) public view {
+    function createNamedPurchase(string value) public view {
         optional(uint) pubkey = 0;
         IShopList(m_address).createPurchase{
                 abiVer: 2,
@@ -57,6 +56,6 @@ contract FillInDebot is ShopInitDebot {
                 expire: 0,
                 callbackId: tvm.functionId(onSuccess),
                 onErrorId: tvm.functionId(onError)
-            }(name);
+            }(value);
     }
 }

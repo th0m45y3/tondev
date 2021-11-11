@@ -21,17 +21,16 @@
 			]
 		},
 		{
-			"name": "showShopList",
+			"name": "showpurchs",
 			"inputs": [
-				{"components":[{"name":"id","type":"uint256"},{"name":"name","type":"bytes"},{"name":"createdAt","type":"uint256"},{"name":"isPaid","type":"bool"},{"name":"price","type":"uint256"}],"name":"purchases","type":"tuple[]"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "showPurshases",
+			"name": "showShopList",
 			"inputs": [
-				{"name":"index","type":"uint32"}
+				{"components":[{"name":"id","type":"uint256"},{"name":"name","type":"bytes"},{"name":"createdAt","type":"uint256"},{"name":"isPaid","type":"bool"},{"name":"price","type":"uint256"}],"name":"purchs","type":"tuple[]"}
 			],
 			"outputs": [
 			]
@@ -57,14 +56,6 @@
 			"inputs": [
 				{"name":"code","type":"cell"},
 				{"name":"data","type":"cell"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "setIcon",
-			"inputs": [
-				{"name":"icon","type":"bytes"}
 			],
 			"outputs": [
 			]
@@ -197,6 +188,14 @@
 			"inputs": [
 			],
 			"outputs": [
+			]
+		},
+		{
+			"name": "m_address",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_address","type":"address"}
 			]
 		}
 	],

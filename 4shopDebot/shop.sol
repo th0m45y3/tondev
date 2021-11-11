@@ -10,7 +10,7 @@ contract ShopList is IShopList{
     uint m_ownerPubkey;
 
     modifier onlyOwner() {
-        require(msg.pubkey() == m_ownerPubkey, 101);
+        require(msg.pubkey() == m_ownerPubkey, 178);
         _;
     }
 
@@ -19,32 +19,38 @@ contract ShopList is IShopList{
         _;
     }
 
+    // modifier onlyOwnerAndAccept() {
+    //     tvm.accept();
+    //     require(msg.pubkey() == m_ownerPubkey, 101);
+    //     _;
+    // }
+
     constructor( uint pubkey) public tvmacc{
         require(pubkey != 0, 120);
         m_ownerPubkey = pubkey;
     }
 
-    function createPurchase(string name) public onlyOwner override tvmacc{
+    function createPurchase(string value) external override tvmacc{
         m_count++;
-        m_purchases[m_count] = Purchase(m_count, name, now, false, 0);
+        m_purchases[m_count] = Purchase(m_count, value, now, false, 0);
     }
 
-    function updatePurchase(uint id, bool isPaid, uint price) public override onlyOwner tvmacc{
+    function updatePurchase(uint id, bool isPaid, uint price) external override tvmacc{
         //debot need to catch the exist error !!!!!!!!!
         require(m_purchases.exists(id), 102);
         optional(Purchase) purch = m_purchases.fetch(id);
         require(purch.hasValue(), 102);
-        m_purchases[id].isPaid = isPaid; 
+        m_purchases[id].isPaid = isPaid;
         m_purchases[id].price = price;
     }
 
-    function deletePurchase(uint id) public override onlyOwner tvmacc{
+    function deletePurchase(uint id) external override tvmacc{
         //debot need to catch the exist error !!!!!!!!!
-        require(m_purchases.exists(id), 102); 
+        require(m_purchases.exists(id), 102);
         delete m_purchases[id];
     }
 
-    function getPurchases() external view override returns (Purchase[] purchases) {
+    function getPurchases() external override tvmacc returns (Purchase[] purchases) {
         string name;
         uint createdAt;
         bool isPaid;
@@ -59,7 +65,7 @@ contract ShopList is IShopList{
        }
     }
 
-    function getPurchSumm() external view override returns (PurchaseSummary purchSumm) {
+    function getPurchSumm() external override tvmacc returns (PurchaseSummary purchSumm) {
         uint paidCount;
         uint unpaidCount;
         uint paidSum;

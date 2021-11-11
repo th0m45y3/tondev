@@ -6,12 +6,12 @@ Input arguments:
 init_data: None
 is_update_tvc: None
 
-Seed phrase: "method only garbage since section fame valley lecture soap strong trend burger"
-Raw address: 0:6df591fc208c746b1831d92621c2e13aa8838eeb3b63d79c7d734ccebb28a938
+Seed phrase: "blood start forum amused join buyer float shove knee dust patient second"
+Raw address: 0:1c75a0eb79e35a36a284ddab206e678ab6149c3b113da5d2c81faac20e5e50b3
 testnet:
-Non-bounceable address (for init): 0QBt9ZH8IIx0axgx2SYhwuE6qIOO6ztj15x9c0zOuyipOJCp
-Bounceable address (for later access): kQBt9ZH8IIx0axgx2SYhwuE6qIOO6ztj15x9c0zOuyipOM1s
+Non-bounceable address (for init): 0QAcdaDreeNaNqKE3asgbmeKthScOxE9pdLIH6rCDl5Qsx6z
+Bounceable address (for later access): kQAcdaDreeNaNqKE3asgbmeKthScOxE9pdLIH6rCDl5Qs0N2
 mainnet:
-Non-bounceable address (for init): UQBt9ZH8IIx0axgx2SYhwuE6qIOO6ztj15x9c0zOuyipOCsj
-Bounceable address (for later access): EQBt9ZH8IIx0axgx2SYhwuE6qIOO6ztj15x9c0zOuyipOHbm
+Non-bounceable address (for init): UQAcdaDreeNaNqKE3asgbmeKthScOxE9pdLIH6rCDl5Qs6U5
+Bounceable address (for later access): EQAcdaDreeNaNqKE3asgbmeKthScOxE9pdLIH6rCDl5Qs_j8
 Succeeded

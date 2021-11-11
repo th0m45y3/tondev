@@ -7,21 +7,44 @@ import "shopInitDebot.sol";
 
 contract ShoppingDebot is ShopInitDebot {
 
-    function getDebotInfo() public functionID(0xDEB) override view returns(
+    // function setIcon(bytes _icon) public {
+    //      require(msg.pubkey() == tvm.pubkey(), 100);
+    //      tvm.accept();
+    //      m_icon = _icon;
+    // }
+
+    function getDebotInfo() functionID(0xDEB) public view override returns(
         string name, string version, string publisher, string key, string author,
-        address support, string hello, string language, string dabi, bytes icon
+        address support, string hello, string language, string dabi//, bytes icon
     ) {
-        getDebotsInfo(
-            "ShopList DeBot — ShoppingDebot",
-            "Hi, i'm a ShopList DeBot. I can update purchases in your ShopList!"
-        );
+        name = "ShopList DeBot — ShoppingDebot";
+        version = "0.0.1";
+        publisher = "th0m45y3";
+        key = "Shopping list manager";
+        author = "th0m45y3";
+        support = address.makeAddrStd(0, 0x6745547f71326dc4f990003d70f308ecbbbd0867b1b379df3913097d4e2cc246);
+        hello = "Hi, i'm a ShopList DeBot. I can update purchases in your ShopList!";
+        language = "en";
+        dabi = m_debotAbi.get();
+        //icon = m_icon;
     }
+
+    // function getDebotInfo() public functionID(0xDEB) override view returns(
+    //     string name, string version, string publisher, string key, string author,
+    //     address support, string hello, string language, string dabi, bytes icon
+    // ) {
+    //     getDebotsInfo(
+    //         "ShopList DeBot — ShoppingDebot",
+    //         "Hi, i'm a ShopList DeBot. I can update purchases in your ShopList!",
+    //         my_icon
+    //     );
+    // }
 
     function menu() internal override {
         string sep = '----------------------------------------';
         Menu.select(
             format(
-                "You spent {} for {} purchases and have {} unpaid (total: {})",
+                "You spent {} coins for {} purchases and have {} unpaid (total: {})",
                     m_summ.paidSum,
                     m_summ.paidCount,
                     m_summ.unpaidCount,
