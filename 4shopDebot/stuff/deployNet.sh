@@ -12,6 +12,7 @@ if [[ $1 != *".tvc"  ]] ; then
     echo ""
     echo "PRIMER:"
     echo "  ${0} mydebot.tvc 0:53bebce9e093a10fcbb84d1116a9dc7a2364c9ee6da801859b2361ab2db74316"
+    exit 1
 fi
 
 DEBOT_NAME=${1%.*} 
@@ -48,7 +49,7 @@ function get_address {
 }
 
 function genaddr {
-    $tos genaddr $1.tvc $1.abi.json --genkey $1.keys.json > $1.log
+    $tos genaddr $1.tvc $1.abi.json --genkey $1.keys.json > stuff/$1.log #################
 }
 
 function decodecontract {
@@ -74,9 +75,9 @@ TODO_DATA=$(setData $CONTRACT_NAME)
 echo "data: $TODO_DATA" #############################
 
 echo "_______________________________________________________________"
-echo "STEP 1: calculating debot address and send money"
+echo "STEP 1: calculating debot address and transfer money"
 echo "_______________________________________________________________"
-echo "Contract name:" #################
+echo "Contract name:$CONTRACT_NAME" #################
 genaddr $DEBOT_NAME
 DEBOT_ADDRESS=$(get_address $DEBOT_NAME)
 echo $DEBOT_ADDRESS                 #################
@@ -117,10 +118,17 @@ echo "STEP 6: call setIcon"
 echo "_______________________________________________________________"
 echo "searching for $DEBOT_NAME.png ..."
 
-ICON_BYTES=$(base64 -w 0 $DEBOT_NAME.png)
-ICON=$(echo -n "data:image/png;base64,$ICON_BYTES" | xxd -p -c 20000)
-#ICON="$(echo -e "${ICON}" | tr -d '[:space:]')"
-$tos --url $NETWORK call $DEBOT_ADDRESS setIcon "{\"icon\":\"$ICON\"}" --sign $DEBOT_NAME.keys.json --abi $DEBOT_NAME.abi.json
+ICON_BYTES=$(base64 -w 0 /stuff/$DEBOT_NAME.png)
+ICON_BYTES=$(echo $ICON_BYTES | tr -d '\n')
+ICON_BYTES=$(echo $ICON_BYTES | tr -d '[:space:]')
+
+ICON=$(echo -n "data:image/png;base64,$ICON_BYTES" | xxd -ps -c 20000)
+ICON=$(echo $ICON | tr -d '[:space:]')
+ICON=$(echo $ICON | tr -d '\n')
+
+$tos --url $NETWORK call $DEBOT_ADDRESS  \
+    setIcon "{\"icon\":\"$ICON\"}"  \
+    --abi $DEBOT_NAME.abi.json --sign $DEBOT_NAME.keys.json
 
 echo "_______________________________________________________________"
 echo "Done! Deployed debot with address: $DEBOT_ADDRESS"

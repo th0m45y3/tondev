@@ -15,7 +15,7 @@ contract ShoppingDebot is ShopInitDebot {
 
     function getDebotInfo() functionID(0xDEB) public view override returns(
         string name, string version, string publisher, string key, string author,
-        address support, string hello, string language, string dabi//, bytes icon
+        address support, string hello, string language, string dabi, bytes icon
     ) {
         name = "ShopList DeBot — ShoppingDebot";
         version = "0.0.1";
@@ -26,7 +26,7 @@ contract ShoppingDebot is ShopInitDebot {
         hello = "Hi, i'm a ShopList DeBot. I can update purchases in your ShopList!";
         language = "en";
         dabi = m_debotAbi.get();
-        //icon = m_icon;
+        icon = m_icon;
     }
 
     // function getDebotInfo() public functionID(0xDEB) override view returns(

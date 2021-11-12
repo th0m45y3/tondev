@@ -19,7 +19,7 @@ DEBOT_NAME=${1%.*}
 CONTRACT_NAME=${2%.*:-DEBOT_NAME%Debot*}
 NETWORK="http://net.ton.dev"
 GIVER_NAME=wallet
-GIVER_ADDRESS=0:8c5cb701575c92b73480434ee37e2a87f004cdf6e69a82c931c23a1cd8cbe311
+GIVER_ADDRESS=0:5b6a6416fd8646732f57687cc6a3fcfbd0a76e72eee0b245cb8767c2054acbb2
 
 
 # Check if tonos-cli installed 
@@ -38,7 +38,7 @@ fi
 
 function giver {
     $tos --url $NETWORK call $GIVER_ADDRESS \
-        sendmoney "{\"dest\":\"$1\",\"amount\":1000000000}" \
+        send "{\"dest\":\"$1\",\"amount\":1000000000}" \
         --abi $GIVER_NAME.abi.json \
         --sign $GIVER_NAME.keys.json
         #1>/dev/null
@@ -75,7 +75,7 @@ TODO_DATA=$(setData $CONTRACT_NAME)
 echo "data: $TODO_DATA" #############################
 
 echo "_______________________________________________________________"
-echo "STEP 1: calculating debot address"
+echo "STEP 1: calculating debot address and transfer money"
 echo "_______________________________________________________________"
 echo "Contract name:$CONTRACT_NAME" #################
 genaddr $DEBOT_NAME
@@ -117,9 +117,9 @@ echo "_______________________________________________________________"
 echo "STEP 6: call setIcon"
 echo "_______________________________________________________________"
 echo "searching for $DEBOT_NAME.png ..."
-:'
+
 ICON_BYTES=$(base64 -w 0 $DEBOT_NAME.png)
-ICON_BYTES=$(echo $ICON_BYTES | tr -d 'n')
+ICON_BYTES=$(echo $ICON_BYTES | tr -d '\n')
 ICON_BYTES=$(echo $ICON_BYTES | tr -d '[:space:]')
 
 ICON=$(echo -n "data:image/png;base64,$ICON_BYTES" | xxd -ps -c 20000)
@@ -129,7 +129,7 @@ ICON=$(echo $ICON | tr -d '\n')
 $tos --url $NETWORK call $DEBOT_ADDRESS  \
     setIcon "{\"icon\":\"$ICON\"}"  \
     --abi $DEBOT_NAME.abi.json --sign $DEBOT_NAME.keys.json
-'
+
 echo "_______________________________________________________________"
 echo "Done! Deployed debot with address: $DEBOT_ADDRESS"
 # echo "Step 0. Save decoded stateInit in $CONTRACT_NAME.decode.json"

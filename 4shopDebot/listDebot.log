@@ -6,12 +6,12 @@ Input arguments:
 init_data: None
 is_update_tvc: None
 
-Seed phrase: "blood start forum amused join buyer float shove knee dust patient second"
-Raw address: 0:1c75a0eb79e35a36a284ddab206e678ab6149c3b113da5d2c81faac20e5e50b3
+Seed phrase: "bread body jeans fashion potato purse catch ecology little man doll gown"
+Raw address: 0:7e0f0bf7a126966d92346c65f38929feae67a41ffaaf2d0c045b0d11ee90bf9b
 testnet:
-Non-bounceable address (for init): 0QAcdaDreeNaNqKE3asgbmeKthScOxE9pdLIH6rCDl5Qsx6z
-Bounceable address (for later access): kQAcdaDreeNaNqKE3asgbmeKthScOxE9pdLIH6rCDl5Qs0N2
+Non-bounceable address (for init): 0QB-Dwv3oSaWbZI0bGXziSn-rmekH_qvLQwEWw0R7pC_m5dj
+Bounceable address (for later access): kQB-Dwv3oSaWbZI0bGXziSn-rmekH_qvLQwEWw0R7pC_m8qm
 mainnet:
-Non-bounceable address (for init): UQAcdaDreeNaNqKE3asgbmeKthScOxE9pdLIH6rCDl5Qs6U5
-Bounceable address (for later access): EQAcdaDreeNaNqKE3asgbmeKthScOxE9pdLIH6rCDl5Qs_j8
+Non-bounceable address (for init): UQB-Dwv3oSaWbZI0bGXziSn-rmekH_qvLQwEWw0R7pC_myzp
+Bounceable address (for later access): EQB-Dwv3oSaWbZI0bGXziSn-rmekH_qvLQwEWw0R7pC_m3Es
 Succeeded

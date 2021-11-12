@@ -42,12 +42,12 @@ contract ListDebot is ShopInitDebot {
     }
 
     function showpurchs() public {
-        optional(uint) none = 0; ///////////////////////////
+        optional(uint) none; 
         Terminal.print(0, "after index=index");
         IShopList(m_address).getPurchSumm{
             abiVer: 2,
             extMsg: true,
-            sign: true, ///false
+            sign: false, 
             pubkey: none,
             time: uint64(now),
             expire: 0,

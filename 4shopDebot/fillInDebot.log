@@ -6,12 +6,12 @@ Input arguments:
 init_data: None
 is_update_tvc: None
 
-Seed phrase: "stove thrive virtual coffee thank comfort begin hawk flower skin merit version"
-Raw address: 0:abc553420a15242a19f998d2c6b81fa1285ef8d4fb83164035124b7228020bf9
+Seed phrase: "copy seminar warfare glad reason liar twenty mixed invest consider hire jealous"
+Raw address: 0:233f948396a4f8b519ee60375e6ba78c820a23d3dfc8dc1f9ebacff61b94d7f6
 testnet:
-Non-bounceable address (for init): 0QCrxVNCChUkKhn5mNLGuB-hKF741PuDFkA1EktyKAIL-T6I
-Bounceable address (for later access): kQCrxVNCChUkKhn5mNLGuB-hKF741PuDFkA1EktyKAIL-WNN
+Non-bounceable address (for init): 0QAjP5SDlqT4tRnuYDdea6eMggoj09_I3B-eus_2G5TX9qFa
+Bounceable address (for later access): kQAjP5SDlqT4tRnuYDdea6eMggoj09_I3B-eus_2G5TX9vyf
 mainnet:
-Non-bounceable address (for init): UQCrxVNCChUkKhn5mNLGuB-hKF741PuDFkA1EktyKAIL-YUC
-Bounceable address (for later access): EQCrxVNCChUkKhn5mNLGuB-hKF741PuDFkA1EktyKAIL-djH
+Non-bounceable address (for init): UQAjP5SDlqT4tRnuYDdea6eMggoj09_I3B-eus_2G5TX9hrQ
+Bounceable address (for later access): EQAjP5SDlqT4tRnuYDdea6eMggoj09_I3B-eus_2G5TX9kcV
 Succeeded

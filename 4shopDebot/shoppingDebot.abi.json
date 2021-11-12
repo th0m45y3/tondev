@@ -53,18 +53,18 @@
 			]
 		},
 		{
-			"name": "setTodoCode",
+			"name": "setIcon",
 			"inputs": [
-				{"name":"code","type":"cell"},
-				{"name":"data","type":"cell"}
+				{"name":"icon","type":"bytes"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "setIcon",
+			"name": "setTodoCode",
 			"inputs": [
-				{"name":"_icon","type":"bytes"}
+				{"name":"code","type":"cell"},
+				{"name":"data","type":"cell"}
 			],
 			"outputs": [
 			]
@@ -197,6 +197,14 @@
 			"inputs": [
 			],
 			"outputs": [
+			]
+		},
+		{
+			"name": "m_address",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_address","type":"address"}
 			]
 		}
 	],

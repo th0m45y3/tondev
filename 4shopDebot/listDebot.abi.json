@@ -52,6 +52,14 @@
 			]
 		},
 		{
+			"name": "setIcon",
+			"inputs": [
+				{"name":"icon","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "setTodoCode",
 			"inputs": [
 				{"name":"code","type":"cell"},

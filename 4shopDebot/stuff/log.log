@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: wallet.tvc
+      wc: None
+    keys: wallet.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "valve purchase category artefact boy east peanut ecology skate agree relief submit"
+Raw address: 0:90edc41e99ac689cdfdd2c9323d2bec7626d8889151a4ba6a2ef48d086d593eb
+testnet:
+Non-bounceable address (for init): 0QCQ7cQemaxonN_dLJMj0r7HYm2IiRUaS6ai70jQhtWT639M
+Bounceable address (for later access): kQCQ7cQemaxonN_dLJMj0r7HYm2IiRUaS6ai70jQhtWT6yKJ
+mainnet:
+Non-bounceable address (for init): UQCQ7cQemaxonN_dLJMj0r7HYm2IiRUaS6ai70jQhtWT68TG
+Bounceable address (for later access): EQCQ7cQemaxonN_dLJMj0r7HYm2IiRUaS6ai70jQhtWT65kD
+Succeeded

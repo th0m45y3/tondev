@@ -5,7 +5,15 @@ pragma AbiHeader pubkey;
 
 import "shopInitDebot.sol";
 
-contract FillInDebot is ShopInitDebot {
+contract FillInDebot is ShopInitDebot {    
+    bytes m_icon;
+
+    function setIcon(bytes icon) public {
+        require(msg.pubkey() == tvm.pubkey(), 100);
+        tvm.accept();
+        m_icon = icon;
+    }
+
 
     function getDebotInfo() public functionID(0xDEB) override view returns(
         string name, string version, string publisher, string key, string author,

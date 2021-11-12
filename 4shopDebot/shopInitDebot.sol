@@ -20,8 +20,14 @@ abstract contract ShopInitDebot is Debot, Upgradable {
     bool m_purchPaid;
     uint m_masterPubKey;          // User pubkey
     address m_msigAddress;           // User wallet address
-    uint32 INITIAL_BALANCE =  200000000;  // Initial contract balance
-    bytes internal m_icon;
+    uint32 INITIAL_BALANCE =  200000000; // Initial contract balance
+    bytes m_icon;
+
+    function setIcon(bytes icon) public {
+        require(msg.pubkey() == tvm.pubkey(), 100);
+        tvm.accept();
+        m_icon = icon;
+    }
 
     function setTodoCode(TvmCell code, TvmCell data) public {
         require(msg.pubkey() == tvm.pubkey(), 101);
