@@ -1,4 +1,0 @@
-Config: default
-Input arguments:
-   input: shop.tvc.tvc
-Error: failed to load StateInit from the tvc file: The system cannot find the file specified. (os error 2)
