@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+cd workFolder
+
 if [[ $1 != *".sol"  ]] ; then 
     echo "ERROR: contract file name .sol required!"
     echo ""

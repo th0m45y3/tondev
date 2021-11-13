@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: fillInDebot.tvc
+      wc: None
+    keys: fillInDebot.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "goat high engine stool rug dutch announce retire dwarf scheme outdoor lawn"
+Raw address: 0:b5d665f5c7e3193f375aef0ef3628de465a00240963d91b06234f5883b871e93
+testnet:
+Non-bounceable address (for init): 0QC11mX1x-MZPzda7w7zYo3kZaACQJY9kbBiNPWIO4cek3g0
+Bounceable address (for later access): kQC11mX1x-MZPzda7w7zYo3kZaACQJY9kbBiNPWIO4cekyXx
+mainnet:
+Non-bounceable address (for init): UQC11mX1x-MZPzda7w7zYo3kZaACQJY9kbBiNPWIO4cek8O-
+Bounceable address (for later access): EQC11mX1x-MZPzda7w7zYo3kZaACQJY9kbBiNPWIO4cek557
+Succeeded

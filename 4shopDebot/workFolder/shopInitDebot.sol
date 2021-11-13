@@ -13,15 +13,15 @@ import "Sdk.sol";
 import "includes.sol";
 
 abstract contract ShopInitDebot is Debot, Upgradable {
-    TvmCell m_stateInit;             // Contract code
+    TvmCell m_stateInit;                    // Contract code
     address public m_address;               // Contract address
-    PurchaseSummary m_summ;        // Statistics of incompleted and completed purchases
-    uint32 m_purchId;                 // Purchase id for update
-    bool m_purchPaid;
-    uint m_masterPubKey;          // User pubkey
-    address m_msigAddress;           // User wallet address
-    uint32 INITIAL_BALANCE =  200000000; // Initial contract balance
-    bytes m_icon;
+    PurchaseSummary m_summ;                 // Statistics of incompleted and completed purchases
+    uint32 m_purchId;                       // Purchase id for update
+    bool m_purchPaid;                       // Purchase paid status to update
+    uint m_masterPubKey;                    // User pubkey
+    address m_msigAddress;                  // User wallet address
+    uint32 INITIAL_BALANCE =  200000000;    // Initial contract balance
+    bytes m_icon;                           // DeBot icon bytes
 
     function setIcon(bytes icon) public {
         require(msg.pubkey() == tvm.pubkey(), 100);
@@ -34,13 +34,7 @@ abstract contract ShopInitDebot is Debot, Upgradable {
         tvm.accept();
         m_stateInit = tvm.buildStateInit(code, data);
     }
-
-    // function setIcon(bytes _icon) public {
-    //     require(msg.pubkey() == tvm.pubkey(), 100);
-    //     tvm.accept();
-    //     m_icon = _icon;
-    // }
-
+    
     function getDebotInfo() functionID(0xDEB) public view virtual override returns(
         string name, string version, string publisher, string key, string author,
         address support, string hello, string language, string dabi, bytes icon

@@ -7,12 +7,6 @@ import "shopInitDebot.sol";
 
 contract ShoppingDebot is ShopInitDebot {
 
-    // function setIcon(bytes _icon) public {
-    //      require(msg.pubkey() == tvm.pubkey(), 100);
-    //      tvm.accept();
-    //      m_icon = _icon;
-    // }
-
     function getDebotInfo() functionID(0xDEB) public view override returns(
         string name, string version, string publisher, string key, string author,
         address support, string hello, string language, string dabi, bytes icon
@@ -28,17 +22,6 @@ contract ShoppingDebot is ShopInitDebot {
         dabi = m_debotAbi.get();
         icon = m_icon;
     }
-
-    // function getDebotInfo() public functionID(0xDEB) override view returns(
-    //     string name, string version, string publisher, string key, string author,
-    //     address support, string hello, string language, string dabi, bytes icon
-    // ) {
-    //     getDebotsInfo(
-    //         "ShopList DeBot — ShoppingDebot",
-    //         "Hi, i'm a ShopList DeBot. I can update purchases in your ShopList!",
-    //         my_icon
-    //     );
-    // }
 
     function menu() internal override {
         string sep = '----------------------------------------';

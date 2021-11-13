@@ -77,7 +77,7 @@ contract ListDebot is ShopInitDebot {
         menu();
     } 
 
-    function deletePurchase(uint32 index) public { //uint32?
+    function deletePurchase(uint32 index) public {
         index = index;
         if (m_summ.paidCount + m_summ.unpaidCount > 0) {
             Terminal.input(tvm.functionId(deleteSelectedPurchase), "Enter purchase number:", false);
@@ -99,6 +99,6 @@ contract ListDebot is ShopInitDebot {
                 expire: 0,
                 callbackId: tvm.functionId(onSuccess),
                 onErrorId: tvm.functionId(onError)
-            }(num); //uint32?
+            }(num);
     }
 }
