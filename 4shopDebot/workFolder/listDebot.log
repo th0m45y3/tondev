@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: listDebot.tvc
+      wc: None
+    keys: listDebot.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "orbit motion tired buzz grab orphan debate angle tragic ignore farm bind"
+Raw address: 0:cab8d63e672805e7bff0f86f317f577bfa4f262001d393f76a782909217a15ba
+testnet:
+Non-bounceable address (for init): 0QDKuNY-ZygF57_w-G8xf1d7-k8mIAHTk_dqeCkJIXoVulTf
+Bounceable address (for later access): kQDKuNY-ZygF57_w-G8xf1d7-k8mIAHTk_dqeCkJIXoVugka
+mainnet:
+Non-bounceable address (for init): UQDKuNY-ZygF57_w-G8xf1d7-k8mIAHTk_dqeCkJIXoVuu9V
+Bounceable address (for later access): EQDKuNY-ZygF57_w-G8xf1d7-k8mIAHTk_dqeCkJIXoVurKQ
+Succeeded

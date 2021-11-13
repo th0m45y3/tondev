@@ -36,7 +36,6 @@ contract ShopList is IShopList{
     }
 
     function updatePurchase(uint id, bool isPaid, uint price) external override tvmacc{
-        //debot need to catch the exist error !!!!!!!!!
         require(m_purchases.exists(id), 102);
         optional(Purchase) purch = m_purchases.fetch(id);
         require(purch.hasValue(), 102);
@@ -45,7 +44,6 @@ contract ShopList is IShopList{
     }
 
     function deletePurchase(uint id) external override tvmacc{
-        //debot need to catch the exist error !!!!!!!!!
         require(m_purchases.exists(id), 102);
         delete m_purchases[id];
     }

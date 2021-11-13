@@ -1,28 +1,28 @@
 #!/bin/bash
 set -e
 
-if [[ $1 != *".tvc"  ]] ; then 
-    echo "ERROR: contract file name .tvc required!"
+if [[ $1 != *".sol"  ]] ; then 
+    echo "ERROR: contract file name .sol required!"
     echo ""
     echo "USAGE:"
     echo "  ${0} FILENAME NETWORK"
     echo "    where:"
-    echo "      FILENAME - required, debot tvc file name"
-    echo "      ADDRESS  - optional, giver address default is 0:17ffbfa96258ea4fa1b65ed77db8d8dc4adc39d561551293cab1e7ba3030fbd3"
+    echo "      DEBOTFILE - required, debot sol file name"
+    echo "      CONTRACTFILE  - optional, wallet address, default is $GIVER_ADDRESS"
     echo ""
-    echo "PRIMER:"
-    echo "  ${0} mydebot.tvc 0:53bebce9e093a10fcbb84d1116a9dc7a2364c9ee6da801859b2361ab2db74316"
+    echo "EXAMPLE:"
+    echo "  ${0} mydebot.sol $GIVER_ADDRESS"
     exit 1
 fi
+
+GIVER_NAME=wallet
+GIVER_ADDRESS=0:6210bd6e8ab3623beb0daf51fd5341bc2cd9f12259712f1b10a1836bf562ac52
 
 DEBOT_NAME=${1%.*} 
 CONTRACT_NAME=${2%.*:-DEBOT_NAME%Debot*}
 NETWORK="http://net.ton.dev"
-GIVER_NAME=wallet
-GIVER_ADDRESS=0:5b6a6416fd8646732f57687cc6a3fcfbd0a76e72eee0b245cb8767c2054acbb2
 
-
-# Check if tonos-cli installed 
+# Check if tonos-cli and tondev installed 
 tos=./tonos-cli
 if $tos --version > /dev/null 2>&1; then
     echo "OK $tos installed locally."
@@ -35,10 +35,21 @@ else
     fi
 fi
 
+ton=./tondev
+if $ton --version > /dev/null 2>&1; then
+    echo "OK $ton installed locally."
+else 
+    ton=tondev
+    if $ton --version > /dev/null 2>&1; then
+        echo "OK $ton installed globally."
+    else 
+        echo "$ton not found globally or in the current directory. Please install it and rerun script."
+    fi
+fi
 
 function giver {
     $tos --url $NETWORK call $GIVER_ADDRESS \
-        send "{\"dest\":\"$1\",\"amount\":1000000000}" \
+        sendM "{\"dest\":\"$1\",\"amount\":1000000000}" \
         --abi $GIVER_NAME.abi.json \
         --sign $GIVER_NAME.keys.json
         #1>/dev/null
@@ -49,7 +60,7 @@ function get_address {
 }
 
 function genaddr {
-    $tos genaddr $1.tvc $1.abi.json --genkey $1.keys.json > $1.log
+    $tos genaddr $1.tvc $1.abi.json --genkey $1.keys.json > $1.log #################
 }
 
 function decodecontract {
@@ -65,8 +76,14 @@ function setData {
     echo $(jq .data $1.decode.json)
 }
 
+echo "STEP 0: compile $CONTRACT_NAME.sol and $DEBOT_NAME.sol"
 echo "_______________________________________________________________"
-echo "STEP 0: decode stateinit"
+$ton sol compile $CONTRACT_NAME.sol
+$ton sol compile $DEBOT_NAME.sol
+echo "compiled!"
+
+echo "_______________________________________________________________"
+echo "STEP 1: decode stateinit"
 echo "_______________________________________________________________"
 $(decodecontract $CONTRACT_NAME)
 TODO_CODE=$(setCode $CONTRACT_NAME)
@@ -75,7 +92,7 @@ TODO_DATA=$(setData $CONTRACT_NAME)
 echo "data: $TODO_DATA" #############################
 
 echo "_______________________________________________________________"
-echo "STEP 1: calculating debot address and transfer money"
+echo "STEP 2: calculating debot address and transfer money"
 echo "_______________________________________________________________"
 echo "Contract name:$CONTRACT_NAME" #################
 genaddr $DEBOT_NAME
@@ -84,37 +101,35 @@ echo $DEBOT_ADDRESS                 #################
 giver $DEBOT_ADDRESS
 
 echo "_______________________________________________________________"
-echo "STEP 2: creating dabi"
+echo "STEP 3: creating dabi"
 echo "_______________________________________________________________"
-#giver $DEBOT_ADDRESS
-DEBOT_DABI=$(cat $DEBOT_NAME.abi.json | xxd -ps -c 20000)
-DEBOT_DABI="$(echo -e "${DEBOT_DABI}" | tr -d '[:space:]')" #> $DEBOT_NAME.dabi.json
+DEBOT_ABI=$(cat $DEBOT_NAME.abi.json | xxd -ps -c 20000)
+DEBOT_ABI="$(echo -e "${DEBOT_ABI}" | tr -d '[:space:]')"
 echo "created!"
 
 echo "_______________________________________________________________"
-echo "Step 3. deploying contract"
+echo "Step 4. deploying contract"
 echo "_______________________________________________________________"
 $tos --url $NETWORK deploy $DEBOT_NAME.tvc "{}" \
     --sign $DEBOT_NAME.keys.json \
-    --abi $DEBOT_NAME.abi.json #1>/dev/null
+    --abi $DEBOT_NAME.abi.json
 
 echo "_______________________________________________________________"
-echo "STEP 4: setting abi file"
+echo "STEP 5: setting abi file"
 echo "_______________________________________________________________"
-$tos --url $NETWORK call $DEBOT_ADDRESS setABI "{\"dabi\":\"$DEBOT_DABI\"}" \
+$tos --url $NETWORK call $DEBOT_ADDRESS setABI "{\"dabi\":\"$DEBOT_ABI\"}" \
     --sign $DEBOT_NAME.keys.json \
-    --abi $DEBOT_NAME.abi.json #1>/dev/null
-
+    --abi $DEBOT_NAME.abi.json
+# cd ../ -> cd suff
 echo "_______________________________________________________________"
-echo "STEP 5: call setTodoCode"
+echo "STEP 6: call setTodoCode"
 echo "_______________________________________________________________"
 $tos --url $NETWORK call $DEBOT_ADDRESS \
     setTodoCode "{\"code\":$TODO_CODE,\"data\":$TODO_DATA}" \
     --abi $DEBOT_NAME.abi.json  --sign $DEBOT_NAME.keys.json
-     # 1>/dev/null
 
 echo "_______________________________________________________________"
-echo "STEP 6: call setIcon"
+echo "STEP 7: call setIcon"
 echo "_______________________________________________________________"
 echo "searching for $DEBOT_NAME.png ..."
 
