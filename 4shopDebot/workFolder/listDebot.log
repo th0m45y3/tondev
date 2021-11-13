@@ -6,12 +6,12 @@ Input arguments:
 init_data: None
 is_update_tvc: None
 
-Seed phrase: "orbit motion tired buzz grab orphan debate angle tragic ignore farm bind"
-Raw address: 0:cab8d63e672805e7bff0f86f317f577bfa4f262001d393f76a782909217a15ba
+Seed phrase: "net rescue hour travel social ankle spend script noodle canyon bright industry"
+Raw address: 0:8e3c9622fd069133e51c7b49b643e2a44ad2242e38dcb90ee434161816b46923
 testnet:
-Non-bounceable address (for init): 0QDKuNY-ZygF57_w-G8xf1d7-k8mIAHTk_dqeCkJIXoVulTf
-Bounceable address (for later access): kQDKuNY-ZygF57_w-G8xf1d7-k8mIAHTk_dqeCkJIXoVugka
+Non-bounceable address (for init): 0QCOPJYi_QaRM-Uce0m2Q-KkStIkLjjcuQ7kNBYYFrRpI9IQ
+Bounceable address (for later access): kQCOPJYi_QaRM-Uce0m2Q-KkStIkLjjcuQ7kNBYYFrRpI4_V
 mainnet:
-Non-bounceable address (for init): UQDKuNY-ZygF57_w-G8xf1d7-k8mIAHTk_dqeCkJIXoVuu9V
-Bounceable address (for later access): EQDKuNY-ZygF57_w-G8xf1d7-k8mIAHTk_dqeCkJIXoVurKQ
+Non-bounceable address (for init): UQCOPJYi_QaRM-Uce0m2Q-KkStIkLjjcuQ7kNBYYFrRpI2ma
+Bounceable address (for later access): EQCOPJYi_QaRM-Uce0m2Q-KkStIkLjjcuQ7kNBYYFrRpIzRf
 Succeeded

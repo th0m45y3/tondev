@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: shoppingDebot.tvc
+      wc: None
+    keys: shoppingDebot.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "door fork coach bicycle speed latin plunge sell cash receive train weird"
+Raw address: 0:70c1aaad47c70a10654bbe764460a8acb2705fc4ada1ee2943ae100116c34603
+testnet:
+Non-bounceable address (for init): 0QBwwaqtR8cKEGVLvnZEYKissnBfxK2h7ilDrhABFsNGAxrg
+Bounceable address (for later access): kQBwwaqtR8cKEGVLvnZEYKissnBfxK2h7ilDrhABFsNGA0cl
+mainnet:
+Non-bounceable address (for init): UQBwwaqtR8cKEGVLvnZEYKissnBfxK2h7ilDrhABFsNGA6Fq
+Bounceable address (for later access): EQBwwaqtR8cKEGVLvnZEYKissnBfxK2h7ilDrhABFsNGA_yv
+Succeeded
