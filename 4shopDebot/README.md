@@ -26,7 +26,7 @@
 # Requirements
 
 ### tonos-cli and compiler
-To run and debug debots install [`tonos-cli`](https://github.com/tonlabs/tonos-cli):
+To run and debug debots install [tonos-cli](https://github.com/tonlabs/tonos-cli):
 
 Note: minimal required version >= 0.11.4.
 
@@ -87,7 +87,7 @@ DeBots can be deployed using [`deployNet.sh`](https://github.com/th0m45y3/tondev
 ```
 
 ### run bots
-To run DeBots open the link: `https://uri.ton.surf/debot?address=<address>&net=devnet`
+To run DeBots open the link: `https://url.ton.surf/debot?address=<address>&net=devnet`
 
 ### hard links
 Tip: you can do a hard links copies of .sol files in the [`workFolder`](https://github.com/th0m45y3/tondev/tree/main/4shopDebot/workFolder) and run ./deploy commands right after saving changes in .sol files in the [`main folder`](https://github.com/th0m45y3/tondev/tree/main/4shopDebot) folder.
