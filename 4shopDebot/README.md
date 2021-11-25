@@ -25,18 +25,19 @@
 
 # Requirements
 
-### tonos-cli and compiler
+### tonos-cli
 To run and debug debots install [tonos-cli](https://github.com/tonlabs/tonos-cli):
 
 Note: minimal required version >= 0.11.4.
 
-Install using `tondev`:
+Install using tondev:
 
 ```bash
 tondev tonos-cli install
 ```
 
-and set 0.47.0 tondev compiler:
+### compiler
+Set 0.47.0 tondev compiler:
 
 ```bash
 tondev sol set --compiler 0.47.0
