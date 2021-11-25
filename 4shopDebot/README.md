@@ -54,7 +54,7 @@ or go to https://stedolan.github.io/jq/download/.
 
 # How to try DeBot
 
-All DeBots alreadt deployed to [net.ton.dev](http://net.ton.dev) and can be called through any DeBot browser that supports it.
+All DeBots already deployed to [net.ton.dev](http://net.ton.dev) and can be called through any DeBot browser that supports it.
 
 To try it out in TON Surf, go to https://beta.ton.surf/ or https://web.ton.surf/:
 
